@@ -1,11 +1,33 @@
+# T.A.R.S. - Technical Automation and Robotics Society
 
-  # Single Page Application Website
+## Getting Started
 
-  This is a code bundle for Single Page Application Website. The original project is available at https://www.figma.com/design/D9gViqvUi3kUCSrLdMSPBG/Single-Page-Application-Website.
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 
-  ## Running the code
+### Local Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/DevangKore17/tars_website_frontend.git
+   ```
 
-  Run `npm i` to install the dependencies.
+2. Navigate into the directory:
+   ```bash
+   cd tars_website_frontend
+   ```
 
-  Run `npm run dev` to start the development server.
-  
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open your browser and navigate to `http://localhost:5173`.
+
+## Contributing
+Contributions, issues, and feature requests are welcome! 
+Feel free to check out the [issues page](https://github.com/DevangKore17/tars_website_frontend/issues) if you want to contribute.
