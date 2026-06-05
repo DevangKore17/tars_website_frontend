@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ImageWithFallback } from './ImageWithFallback';
 import { NodeButton } from './NodeButton';
-import tarsLogo from '../../imports/TARS_LOGO.jpeg';
+import tarsLogo from '../../imports/TARS_LOGO.png';
 
 export function Hero() {
   const [typedText, setTypedText] = useState('');
@@ -30,7 +30,7 @@ export function Hero() {
     <section id="home" className="relative flex flex-col items-center justify-center min-h-[85vh] text-center pt-10 z-10">
 
       {/* Main Content */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}

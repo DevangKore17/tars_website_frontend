@@ -13,10 +13,10 @@ const teamMembers = [
   { role: 'Chair Person', name: 'Krish Ramnani', image: undefined /* replace undefined with krishPhoto */ },
   { role: 'Vice Chairperson', name: 'Dia Parekh', image: undefined },
   { role: 'Technical Head', name: 'Kshitij Nirdhar', image: undefined },
-  { role: 'Joint Technical Head', name: 'Krish Jam', image: undefined },
+  { role: 'Joint Technical Head', name: 'Krish Jagwani', image: undefined },
   { role: 'Embedded Head', name: 'Akshay Hiremath', image: undefined },
   { role: 'Software Head', name: 'Devang Kore', image: undefined },
-  { role: 'Marketing Head', name: 'Tanvir Singh Kohli', image: undefined },
+  { role: 'Operations and Marketing Head', name: 'Tanvir Singh Kohli', image: undefined },
   { role: 'Design Head', name: 'Saumya Sinha', image: undefined },
   { role: 'Project Design Head', name: 'Sayam Jain', image: undefined },
 ];
@@ -25,7 +25,7 @@ export function Team() {
   return (
     <section id="team" className="scroll-mt-32 relative z-10">
       <div className="mb-12 md:mb-16 lg:mb-20 flex flex-col items-center">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -102,7 +102,7 @@ export function Team() {
                 <p className="text-gray-400 group-hover:text-white group-active:text-white text-xl md:text-2xl uppercase tracking-widest font-body transition-colors relative z-10">
                   [{member.name}]
                 </p>
-                
+
               </div>
             </Tilt>
           </motion.div>
