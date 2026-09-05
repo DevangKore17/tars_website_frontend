@@ -1,10 +1,6 @@
 # T.A.R.S. - Technical Automation and Robotics Society
 
-![TARS](src/imports/TARS_LOGO.jpeg)
-
-The official website for the **Technical Automation and Robotics Society (TARS)**. This single-page application showcases the committee's vision, core node departments, futuristic rover models, and interactive network features.
-
-## 🛠️ Getting Started
+## Getting Started
 
 ### Prerequisites
 Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
@@ -32,5 +28,6 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 
 5. Open your browser and navigate to `http://localhost:5173`.
 
-## 📝 License
-Copyright © TARS Committee. All rights reserved.
+## Contributing
+Contributions, issues, and feature requests are welcome! 
+Feel free to check out the [issues page](https://github.com/DevangKore17/tars_website_frontend/issues) if you want to contribute.
