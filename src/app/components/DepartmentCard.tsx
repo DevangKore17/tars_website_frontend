@@ -27,17 +27,17 @@ export function DepartmentCard({ id, name, desc, icon }: DepartmentCardProps) {
           </div>
           <div className="flex flex-col items-end">
             <div className="w-2 h-2 rounded-full bg-[#333] group-hover:bg-tars-green group-active:bg-tars-green group-hover:shadow-[0_0_8px_rgba(0,255,65,0.8)] group-active:shadow-[0_0_8px_rgba(0,255,65,0.8)] mb-2 transition-all"></div>
-            <span className="font-body text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-500 group-hover:text-tars-green group-active:text-tars-green transition-all tracking-widest">
+            <span className="font-heading text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-500 group-hover:text-tars-green group-active:text-tars-green transition-all tracking-widest">
               {id}
             </span>
           </div>
         </div>
         
-        <h3 className="relative z-10 font-body text-2xl md:text-3xl lg:text-4xl xl:text-5xl uppercase mb-4 lg:mb-6 tracking-widest text-white group-hover:text-tars-green group-active:text-tars-green transition-colors drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
+        <h3 className="relative z-10 font-heading text-2xl md:text-3xl lg:text-4xl xl:text-5xl uppercase mb-4 lg:mb-6 tracking-widest text-white group-hover:text-tars-green group-active:text-tars-green transition-colors drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
           {name}
         </h3>
         
-        <p className="relative z-10 md:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-gray-400 group-hover:text-gray-300 group-active:text-gray-300 flex-grow font-body">
+        <p className="relative z-10 md:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-gray-400 group-hover:text-gray-300 group-active:text-gray-300 flex-grow font-heading">
           {desc}
         </p>
       </div>

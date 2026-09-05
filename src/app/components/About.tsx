@@ -23,12 +23,12 @@ export function About() {
 
         <div className="flex items-center mb-8 sm:mb-12 border-b border-[#333333] pb-4">
           <div className="w-4 h-4 rounded-full bg-tars-green mr-4 animate-pulse shadow-[0_0_10px_rgba(0,255,65,0.8)]"></div>
-          <h2 className="font-body text-3xl md:text-4xl lg:text-5xl uppercase text-white tracking-widest">
+          <h2 className="font-title text-3xl md:text-4xl lg:text-5xl uppercase text-white tracking-widest">
             About Us
           </h2>
         </div>
         
-        <div className="space-y-6 lg:space-y-10 text-gray-300 leading-relaxed text-lg md:text-2xl lg:text-3xl font-body">
+        <div className="space-y-6 lg:space-y-10 text-gray-300 leading-relaxed text-lg md:text-2xl lg:text-3xl font-heading">
           <p className="flex">
             <span className="text-tars-green mr-4 mt-1 opacity-70">|-</span>
             <span>

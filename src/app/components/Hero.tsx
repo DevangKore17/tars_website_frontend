@@ -52,7 +52,7 @@ export function Hero() {
           </div>
         </div>
 
-        <h1 className="font-body text-5xl sm:text-6xl md:text-8xl lg:text-9xl mb-4 sm:mb-6 lg:mb-10 leading-tight uppercase text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] tracking-widest">
+        <h1 className="font-title text-5xl sm:text-6xl md:text-8xl lg:text-9xl mb-4 sm:mb-6 lg:mb-10 leading-tight uppercase text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] tracking-widest">
           T.A.R.S.
         </h1>
 
@@ -60,7 +60,7 @@ export function Hero() {
         <div className="flex items-center justify-center mb-10 sm:mb-12 lg:mb-16">
           <div className="hidden md:block w-12 h-[1px] bg-gradient-to-r from-transparent to-tars-green mr-4"></div>
           <div className="w-2 h-2 rounded-full bg-tars-green mr-4 shadow-[0_0_8px_rgba(0,255,65,0.8)] animate-ping"></div>
-          <p className="font-body text-xl sm:text-2xl md:text-3xl lg:text-4xl text-tars-green tracking-widest max-w-2xl lg:max-w-4xl leading-relaxed min-h-[3rem] md:min-h-[2rem]">
+          <p className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl text-tars-green tracking-widest max-w-2xl lg:max-w-4xl leading-relaxed min-h-[3rem] md:min-h-[2rem]">
             {typedText}
             <span className="animate-pulse inline-block w-3 h-6 bg-tars-green ml-2 align-middle shadow-[0_0_8px_rgba(0,255,65,0.8)]"></span>
           </p>

@@ -1,11 +1,114 @@
-import React, { useRef } from 'react';
+import React, { useRef, Suspense, Component } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, ContactShadows, Environment } from '@react-three/drei';
+import { OrbitControls, ContactShadows, Environment, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
-function RealisticDummyRover() {
+/* ─────────────────────────────────────────────
+ * GLB Model Path — drop your .glb file here:
+ *   public/models/rover.glb
+ * ───────────────────────────────────────────── */
+const GLB_MODEL_PATH = '/models/rover.glb';
+
+/**
+ * Error boundary that catches GLB load failures and shows a placeholder.
+ */
+class ModelErrorBoundary extends Component<
+  { children: React.ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <PlaceholderModel />;
+    }
+    return this.props.children;
+  }
+}
+
+/**
+ * Placeholder shown when no .glb file is found.
+ */
+function PlaceholderModel() {
   const group = useRef<THREE.Group>(null);
-  
+
+  useFrame((state) => {
+    if (group.current) {
+      group.current.rotation.y = state.clock.elapsedTime * 0.3;
+    }
+  });
+
+  return (
+    <group ref={group}>
+      <mesh>
+        <boxGeometry args={[1.5, 1.5, 1.5]} />
+        <meshStandardMaterial color="#333" wireframe />
+      </mesh>
+      <mesh position={[0, 0, 0]}>
+        <boxGeometry args={[1.52, 1.52, 1.52]} />
+        <meshStandardMaterial color="#00ff41" wireframe opacity={0.3} transparent />
+      </mesh>
+    </group>
+  );
+}
+
+/**
+ * Loads and renders an external .glb model.
+ * Auto-scales and centers the model to fit the viewport regardless of its original size.
+ */
+function RoverModel() {
+  const { scene } = useGLTF(GLB_MODEL_PATH);
+  const group = useRef<THREE.Group>(null);
+
+  React.useEffect(() => {
+    // Compute bounding box and auto-scale the model to a reasonable size
+    const box = new THREE.Box3().setFromObject(scene);
+    const size = new THREE.Vector3();
+    const center = new THREE.Vector3();
+    box.getSize(size);
+    box.getCenter(center);
+
+    // Scale the model so the largest dimension is ~3 units
+    const maxDim = Math.max(size.x, size.y, size.z);
+    if (maxDim > 0) {
+      const scale = 3 / maxDim;
+      scene.scale.setScalar(scale);
+    }
+
+    // Re-center after scaling
+    const scaledBox = new THREE.Box3().setFromObject(scene);
+    const scaledCenter = new THREE.Vector3();
+    scaledBox.getCenter(scaledCenter);
+    scene.position.sub(scaledCenter);
+
+    // Enhance materials
+    scene.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+
+        const mat = child.material as THREE.MeshStandardMaterial;
+        if (mat && mat.isMeshStandardMaterial) {
+          const isWhite = mat.color && mat.color.r > 0.9 && mat.color.g > 0.9 && mat.color.b > 0.9;
+          if (isWhite) {
+            mat.color.set('#e0e0e0');
+            mat.metalness = 0.15;
+            mat.roughness = 0.6;
+          }
+          mat.envMapIntensity = 1.2;
+          mat.needsUpdate = true;
+        }
+      }
+    });
+  }, [scene]);
+
   // Gentle floating animation
   useFrame((state) => {
     if (group.current) {
@@ -14,121 +117,72 @@ function RealisticDummyRover() {
   });
 
   return (
-    <group ref={group} position={[0, 0.4, 0]}>
-      {/* Main Body (Aluminum) */}
-      <mesh position={[0, 0, 0]}>
-        <boxGeometry args={[2, 0.8, 3]} />
-        <meshStandardMaterial color="#dcdcdc" metalness={0.6} roughness={0.4} />
-      </mesh>
-
-      {/* Solar Panel (Top) */}
-      <mesh position={[0, 0.45, -0.5]}>
-        <boxGeometry args={[1.8, 0.05, 1.8]} />
-        <meshStandardMaterial color="#1a2332" metalness={0.9} roughness={0.1} />
-      </mesh>
-      
-      {/* Electronics Box (Gold/Kapton foil look) */}
-      <mesh position={[0, 0.6, 0.8]}>
-        <boxGeometry args={[1, 0.4, 0.8]} />
-        <meshStandardMaterial color="#cc9933" metalness={0.3} roughness={0.6} />
-      </mesh>
-
-      {/* Mast */}
-      <mesh position={[0, 1.2, 1]}>
-        <cylinderGeometry args={[0.08, 0.08, 1.5]} />
-        <meshStandardMaterial color="#aaaaaa" metalness={0.8} roughness={0.2} />
-      </mesh>
-      
-      {/* Mast Head (Camera Pan/Tilt unit) */}
-      <mesh position={[0, 2.0, 1]}>
-        <boxGeometry args={[0.5, 0.4, 0.4]} />
-        <meshStandardMaterial color="#e0e0e0" metalness={0.5} roughness={0.5} />
-      </mesh>
-      
-      {/* Camera Lenses */}
-      <mesh position={[0.15, 2.0, 1.2]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.08, 0.08, 0.1, 16]} />
-        <meshStandardMaterial color="#050505" metalness={0.9} roughness={0.1} />
-      </mesh>
-      <mesh position={[-0.15, 2.0, 1.2]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.08, 0.08, 0.1, 16]} />
-        <meshStandardMaterial color="#050505" metalness={0.9} roughness={0.1} />
-      </mesh>
-
-      {/* Suspension / Rocker-Bogie (Simple representation) */}
-      <mesh position={[1.05, -0.2, 0]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.05, 0.05, 2.8]} />
-        <meshStandardMaterial color="#555" metalness={0.7} roughness={0.3} />
-      </mesh>
-      <mesh position={[-1.05, -0.2, 0]} rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.05, 0.05, 2.8]} />
-        <meshStandardMaterial color="#555" metalness={0.7} roughness={0.3} />
-      </mesh>
-
-      {/* Wheels (Black rubber with metallic hubs) */}
-      {[-1.4, 0, 1.4].map((zPos, i) => (
-        <React.Fragment key={i}>
-          {/* Left Wheel */}
-          <group position={[1.3, -0.4, zPos]} rotation={[0, 0, Math.PI / 2]}>
-            <mesh>
-              <cylinderGeometry args={[0.4, 0.4, 0.3, 32]} />
-              <meshStandardMaterial color="#111" roughness={0.9} />
-            </mesh>
-            <mesh position={[0, 0.16, 0]}>
-              <cylinderGeometry args={[0.2, 0.2, 0.05, 16]} />
-              <meshStandardMaterial color="#aaa" metalness={0.8} roughness={0.2} />
-            </mesh>
-          </group>
-          {/* Right Wheel */}
-          <group position={[-1.3, -0.4, zPos]} rotation={[0, 0, Math.PI / 2]}>
-            <mesh>
-              <cylinderGeometry args={[0.4, 0.4, 0.3, 32]} />
-              <meshStandardMaterial color="#111" roughness={0.9} />
-            </mesh>
-            <mesh position={[0, -0.16, 0]}>
-              <cylinderGeometry args={[0.2, 0.2, 0.05, 16]} />
-              <meshStandardMaterial color="#aaa" metalness={0.8} roughness={0.2} />
-            </mesh>
-          </group>
-        </React.Fragment>
-      ))}
+    <group ref={group}>
+      <primitive object={scene} />
     </group>
+  );
+}
+
+/**
+ * Simple loading indicator shown while the GLB file is being fetched.
+ */
+function LoadingFallback() {
+  const ref = useRef<THREE.Mesh>(null);
+
+  useFrame((state) => {
+    if (ref.current) {
+      ref.current.rotation.y = state.clock.elapsedTime * 2;
+    }
+  });
+
+  return (
+    <mesh ref={ref}>
+      <octahedronGeometry args={[0.5]} />
+      <meshStandardMaterial color="#00ff41" wireframe />
+    </mesh>
   );
 }
 
 export function InteractiveRover() {
   return (
     <div className="w-full h-full min-h-[300px] md:min-h-[400px] lg:min-h-[500px] xl:min-h-[600px] relative" style={{ cursor: 'grab' }}>
-      {/* Clean White Studio Background */}
+      {/* Original light background */}
       <div className="absolute inset-0 z-0 bg-[#f8f9fa]">
         <Canvas camera={{ position: [6, 4, 7], fov: 40 }} shadows>
           <color attach="background" args={['#f8f9fa']} />
           <ambientLight intensity={0.5} />
+          <hemisphereLight args={['#b1c4de', '#4a4a4a', 0.6]} />
           <directionalLight 
             position={[10, 15, 10]} 
             intensity={1.5} 
             castShadow 
             shadow-mapSize={[1024, 1024]}
           />
+          <directionalLight position={[-8, 10, -5]} intensity={0.8} />
+          <directionalLight position={[0, -5, 10]} intensity={0.3} />
           <Environment preset="city" />
           
-          <RealisticDummyRover />
+          <ModelErrorBoundary>
+            <Suspense fallback={<LoadingFallback />}>
+              <RoverModel />
+            </Suspense>
+          </ModelErrorBoundary>
           
           {/* Soft floor shadow */}
           <ContactShadows position={[0, -0.6, 0]} opacity={0.6} scale={10} blur={2} far={4} />
           
           <OrbitControls 
             enableZoom={true}
-            enablePan={false}
+            enablePan={true}
             autoRotate={true}
             autoRotateSpeed={0.5}
-            maxPolarAngle={Math.PI / 2}
-            minDistance={4}
-            maxDistance={15}
+            maxPolarAngle={Math.PI / 1.2}
+            minDistance={1}
+            maxDistance={50}
           />
         </Canvas>
         
-        {/* Decorative Overlay UI - Adjusted for light background */}
+        {/* Decorative Overlay UI */}
         <div className="absolute top-4 left-4 pointer-events-none z-10">
           <span className="font-body text-gray-800 text-sm tracking-widest flex flex-col bg-white/50 p-2 rounded">
             <span>ARES_CAD_PREVIEW</span>

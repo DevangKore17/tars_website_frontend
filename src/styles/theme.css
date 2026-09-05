@@ -181,8 +181,9 @@
 }
 
 @theme {
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Roboto', sans-serif;
+  --font-title: 'Orbitron', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
   --color-tars-amber: #FFB000;
   --color-tars-green: #00FF41;
 }

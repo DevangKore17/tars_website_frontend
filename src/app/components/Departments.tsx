@@ -35,7 +35,7 @@ export function Departments() {
         <div className="hidden md:block w-24 h-[1px] bg-gradient-to-r from-transparent to-[#333] mr-6"></div>
         <div className="flex items-center border border-[#333] bg-[#0A0A0A]/80 backdrop-blur-sm px-8 py-3 rounded-full shadow-[0_0_15px_rgba(0,0,0,0.8)]">
           <div className="w-3 h-3 rounded-full bg-tars-green mr-4 shadow-[0_0_8px_rgba(0,255,65,0.8)] animate-pulse"></div>
-          <h2 className="font-body text-3xl md:text-4xl lg:text-5xl uppercase text-white tracking-widest drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
+          <h2 className="font-title text-3xl md:text-4xl lg:text-5xl uppercase text-white tracking-widest drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
             Departments
           </h2>
         </div>

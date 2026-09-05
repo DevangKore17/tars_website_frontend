@@ -7,7 +7,7 @@ export function RoverModel() {
       <div className="flex flex-col md:flex-row gap-12 lg:gap-20 items-center border border-[#333333] border-dashed p-6 md:p-10 lg:p-16 xl:p-20 bg-[#0A0A0A] shadow-[-8px_8px_0px_0px_rgba(51,51,51,0.5)] md:shadow-[-12px_12px_0px_0px_rgba(51,51,51,0.5)] xl:shadow-[-20px_20px_0px_0px_rgba(51,51,51,0.5)]">
         
         <div className="w-full md:w-1/2 order-2 md:order-1 space-y-6 lg:space-y-10">
-          <h2 className="font-heading text-xl md:text-2xl lg:text-3xl xl:text-4xl uppercase text-white mb-6 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+          <h2 className="font-title text-xl md:text-2xl lg:text-3xl xl:text-4xl uppercase text-white mb-6 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
             <span className="text-tars-green drop-shadow-[0_0_5px_rgba(0,255,65,0.8)]">&gt;_</span> Project_ARES
           </h2>
           <p className="text-gray-300 md:text-2xl lg:text-3xl xl:text-4xl leading-relaxed mb-6 lg:mb-10">

@@ -137,7 +137,7 @@ export function TerminalConsole() {
         <form onSubmit={handleCommand} className="border-t border-[#333333] p-3 flex items-center bg-[#050505] relative z-10">
           <div className="w-2 h-2 rounded-full bg-tars-green mr-2 animate-pulse shadow-[0_0_8px_rgba(0,255,65,0.8)]"></div>
           <div className="w-4 h-px bg-tars-green mr-2"></div>
-          <span className="text-tars-green mr-2 font-body text-lg">[AWAITING_SIGNAL]:</span>
+          <span className="text-tars-green mr-2 font-heading text-lg">[AWAITING_SIGNAL]:</span>
           <input 
             ref={inputRef}
             type="text" 

@@ -33,11 +33,11 @@ export function Team() {
           className="flex items-center mb-6"
         >
           <div className="w-4 h-4 rounded-full bg-tars-green mr-4 animate-pulse shadow-[0_0_10px_rgba(0,255,65,0.8)]"></div>
-          <h2 className="font-body text-3xl md:text-4xl lg:text-5xl uppercase text-white tracking-widest drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+          <h2 className="font-title text-3xl md:text-4xl lg:text-5xl uppercase text-white tracking-widest drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
             Core Nodes
           </h2>
         </motion.div>
-        <p className="text-gray-300 md:text-xl lg:text-2xl font-body tracking-widest text-center max-w-2xl">
+        <p className="text-gray-300 md:text-xl lg:text-2xl font-heading tracking-widest text-center max-w-2xl">
           The operational minds behind the autonomous systems.
         </p>
       </div>
@@ -92,7 +92,7 @@ export function Team() {
                 {/* Role */}
                 <div className="flex items-center justify-center mb-3 relative z-10">
                   <div className="w-4 h-[1px] bg-tars-green mr-2 opacity-50"></div>
-                  <h3 className="text-tars-green text-sm md:text-base font-body tracking-widest uppercase text-center">
+                  <h3 className="text-tars-green text-sm md:text-base font-heading tracking-widest uppercase text-center">
                     {member.role}
                   </h3>
                   <div className="w-4 h-[1px] bg-tars-green ml-2 opacity-50"></div>

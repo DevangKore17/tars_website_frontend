@@ -17,11 +17,11 @@ export function VisionMission() {
 
           <div className="relative z-10 flex items-center mb-6 lg:mb-8 border-b border-[#333] pb-4">
             <div className="w-4 h-4 rounded-full bg-tars-green mr-4 animate-pulse shadow-[0_0_10px_rgba(0,255,65,0.8)]"></div>
-            <h2 className="font-body text-3xl md:text-4xl lg:text-5xl uppercase text-white tracking-widest drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+            <h2 className="font-title text-3xl md:text-4xl lg:text-5xl uppercase text-white tracking-widest drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
               Directives
             </h2>
           </div>
-          <p className="relative z-10 text-gray-300 font-body text-lg md:text-xl lg:text-2xl leading-relaxed tracking-wide border-l-2 border-[#333] group-hover:border-tars-green group-active:border-tars-green pl-4 transition-colors duration-500">
+          <p className="relative z-10 text-gray-300 font-heading text-lg md:text-xl lg:text-2xl leading-relaxed tracking-wide border-l-2 border-[#333] group-hover:border-tars-green group-active:border-tars-green pl-4 transition-colors duration-500">
             The fundamental protocols and objectives driving the Technical Automation and Robotics Society.
           </p>
         </div>
@@ -42,11 +42,11 @@ export function VisionMission() {
 
               <div className="flex items-center mb-6 lg:mb-8 border-b border-[#333] pb-4 relative z-10">
                 <span className="font-body text-tars-green text-sm tracking-widest mr-3 border border-tars-green px-2 py-1 rounded-sm shadow-[0_0_5px_rgba(0,255,65,0.3)]">01</span>
-                <h3 className="font-body text-3xl lg:text-4xl uppercase text-white tracking-widest drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+                <h3 className="font-heading text-3xl lg:text-4xl uppercase text-white tracking-widest drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
                   Vision
                 </h3>
               </div>
-              <div className="mt-auto text-gray-300 text-lg md:text-xl font-body leading-relaxed relative z-10">
+              <div className="mt-auto text-gray-300 text-lg md:text-xl font-heading leading-relaxed relative z-10">
                 <p className="border-l-2 border-[#333] group-hover:border-tars-green group-active:border-tars-green pl-4 transition-colors duration-500">
                   To be at the forefront of robotic innovation, cultivating a generation of engineers 
                   who seamlessly blend mechanics, electronics, and software to solve complex global challenges 
@@ -69,11 +69,11 @@ export function VisionMission() {
 
               <div className="flex items-center mb-6 lg:mb-8 border-b border-[#333] pb-4 relative z-10">
                 <span className="font-body text-tars-green text-sm tracking-widest mr-3 border border-tars-green px-2 py-1 rounded-sm shadow-[0_0_5px_rgba(0,255,65,0.3)]">02</span>
-                <h3 className="font-body text-3xl lg:text-4xl uppercase text-white tracking-widest drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+                <h3 className="font-heading text-3xl lg:text-4xl uppercase text-white tracking-widest drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
                   Mission
                 </h3>
               </div>
-              <div className="mt-auto text-gray-300 text-lg md:text-xl font-body leading-relaxed relative z-10">
+              <div className="mt-auto text-gray-300 text-lg md:text-xl font-heading leading-relaxed relative z-10">
                 <ul className="space-y-4 lg:space-y-6 list-none border-l-2 border-[#333] group-hover:border-tars-green group-active:border-tars-green pl-4 transition-colors duration-500">
                   <li className="flex items-start">
                     <div className="w-1.5 h-1.5 rounded-full bg-tars-green mt-2.5 mr-3 shadow-[0_0_5px_rgba(0,255,65,0.8)] min-w-[6px]"></div>
